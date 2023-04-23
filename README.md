@@ -6,6 +6,6 @@ are on the ksp forums page, as well as in the install folder's README file.
 
 Localization files are available to download from the localization folder above. You need to download and copy the files in there to the localisation folder in your GameData/BeamedPowerStandalone/Localization.
 
+Chinese translation by tinygrox
 
-
-This mod is currently licensed as Public Domain Work.
+All of my work in this mod is currently licensed as Public Domain Work.
