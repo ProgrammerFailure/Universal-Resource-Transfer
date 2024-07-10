@@ -4,6 +4,31 @@ using UnityEngine;
 namespace BeamedPowerStandalone
 {
     // instructions for implementing custom difficulty settings were found on '1.2 modders notes' on the forums
+    [KSPAddon(KSPAddon.Startup.Instantly, false)]
+    public class ConfigFileReader : MonoBehaviour
+    {
+        static readonly string ConfigFilePath = KSPUtil.ApplicationRootPath + "GameData/MyMod/Settings.cfg";
+        static ConfigNode Node1;
+        public static string DetectedResource;
+        public void Start()
+        {
+            Node1 = ConfigNode.Load(ConfigFilePath);
+            DetectedResource = Node1.GetNode("TestNode").GetValue("DetectedResource");
+        }
+        public void Update()
+        {
+            //if (String.IsNullOrEmpty(DetectedResource))
+            //{
+            //    Debug.Log(Time.realtimeSinceStartup + "DetectedResource is empty");
+            //}
+            //else
+            //{
+            //    Debug.Log(Time.realtimeSinceStartup + "DetectedResource is: " + DetectedResource);
+            //}
+        }
+    }
+
+
     public class BPSettings : GameParameters.CustomParameterNode
     {
         public override string Title { get { return "Beamed Power Difficulty Settings"; } }

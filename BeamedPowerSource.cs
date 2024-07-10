@@ -7,6 +7,7 @@ namespace BeamedPowerStandalone
 {
     public class WirelessSource : PartModule
     {
+        static string ManagedResource = ConfigFileReader.DetectedResource;
         // creating things on part right click menu (flight)
         [KSPField(guiName = "Power Transmitter", isPersistant = true, guiActive = true, guiActiveEditor = false), UI_Toggle(scene = UI_Scene.Flight)]
         public bool Transmitting;
@@ -111,7 +112,7 @@ namespace BeamedPowerStandalone
         }
 
         // getting resource id of 'Electric Charge'
-        public int EChash = PartResourceLibrary.Instance.GetDefinition("ElectricCharge").id;
+        public int ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id;
 
         // setting action group capability
         [KSPAction(guiName = "Toggle Power Transmitter")]
@@ -206,7 +207,7 @@ namespace BeamedPowerStandalone
                 }
                 SyncAnimationState();
 
-                this.vessel.GetConnectedResourceTotals(EChash, out double amount, out double maxAmount);
+                this.vessel.GetConnectedResourceTotals(ResourceHash, out double amount, out double maxAmount);
                 if (amount/maxAmount < 0.2d)
                 {
                     PowerBeamed = 0f;
@@ -257,7 +258,7 @@ namespace BeamedPowerStandalone
                     if (HighLogic.CurrentGame.Parameters.CustomParams<BPSettings>().BackgroundProcessing == false)
                     {
                         // reducing amount of EC in craft in each frame (makes it look like continuous EC consumption)
-                        this.part.RequestResource(EChash, (double)(PowerBeamed * TimeWarp.fixedDeltaTime));
+                        this.part.RequestResource(ResourceHash, (double)(PowerBeamed * TimeWarp.fixedDeltaTime));
                     }
                 }
                 else

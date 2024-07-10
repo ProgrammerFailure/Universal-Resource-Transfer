@@ -6,12 +6,13 @@ namespace BeamedPowerStandalone
     // as vessel modules are processed in the background, this adds background vessel resource management
     public class BackgroundProcessing : VesselModule
     {
-        int EChash; int frames; double requestAmount;
+        static string ManagedResource = ConfigFileReader.DetectedResource;
+        int ResourceHash; int frames; double requestAmount;
 
         public override void OnLoadVessel()
         {
             base.OnLoadVessel();
-            EChash = PartResourceLibrary.Instance.GetDefinition("ElectricCharge").id; frames = 0; requestAmount = 0;
+            ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id; frames = 0; requestAmount = 0;
         }
 
         private double LoadVesselPowerData()
@@ -67,7 +68,7 @@ namespace BeamedPowerStandalone
             }
             if (HighLogic.CurrentGame.Parameters.CustomParams<BPSettings>().BackgroundProcessing == true)
             {
-                this.vessel.RequestResource(this.vessel.Parts[0], EChash, requestAmount, false);
+                this.vessel.RequestResource(this.vessel.Parts[0], ResourceHash, requestAmount, false);
             }
         }
     }

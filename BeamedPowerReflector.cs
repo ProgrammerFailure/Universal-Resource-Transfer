@@ -8,6 +8,7 @@ namespace BeamedPowerStandalone
     public class WirelessReflector : PartModule
     {
         // parameters set in part.cfg file
+        static string ManagedResource = ConfigFileReader.DetectedResource;
         [KSPField(isPersistant = false)]
         public float Reflectivity;
 
@@ -81,7 +82,7 @@ namespace BeamedPowerStandalone
 
         // declaring frequently used variables
         VesselFinder vesselFinder = new VesselFinder(); int frames;
-        readonly int EChash = PartResourceLibrary.Instance.GetDefinition("ElectricCharge").id; int initFrames;
+        readonly int ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id; int initFrames;
         ModuleCoreHeat coreHeat; ReceivedPower receiver = new ReceivedPower(); double heatModifier;
 
         string operational = Localizer.Format("#LOC_BeamedPower_status_Operational");
@@ -246,7 +247,7 @@ namespace BeamedPowerStandalone
                     SyncAnimationState();
 
                     // fail-safe mechanism (ie if amplify setting is set too high and craft runs out of power, amplifier will be shutdown)
-                    this.vessel.GetConnectedResourceTotals(EChash, out double amount, out double maxAmount);
+                    this.vessel.GetConnectedResourceTotals(ResourceHash, out double amount, out double maxAmount);
                     if (amount / maxAmount < 0.2d)
                     {
                         IsEnabled = false;
@@ -275,7 +276,7 @@ namespace BeamedPowerStandalone
                         resourceConsumption = (float)(recvPower * (AmplifyMult - 1));
                         if (background == false)
                         {
-                            this.part.RequestResource(EChash, (double)resourceConsumption * Time.fixedDeltaTime);
+                            this.part.RequestResource(ResourceHash, (double)resourceConsumption * Time.fixedDeltaTime);
                         }
                         Excess += Mathf.Clamp((resourceConsumption * Efficiency), 0f, 50000f);
                     }
