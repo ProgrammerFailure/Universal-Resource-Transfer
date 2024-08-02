@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeamedPowerStandalone", "BeamedPowerStandalone.csproj", "{DB80DF10-16F3-4DD2-A87F-8C188B6D6A67}"
+	ProjectSection(ProjectDependencies) = postProject
+		{95AAA552-BB15-4F2E-8567-FA5DB9299F39} = {95AAA552-BB15-4F2E-8567-FA5DB9299F39}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeamedPowerPropulsion", "BeamedPowerPropulsion\BeamedPowerPropulsion.csproj", "{95AAA552-BB15-4F2E-8567-FA5DB9299F39}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB80DF10-16F3-4DD2-A87F-8C188B6D6A67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB80DF10-16F3-4DD2-A87F-8C188B6D6A67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB80DF10-16F3-4DD2-A87F-8C188B6D6A67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB80DF10-16F3-4DD2-A87F-8C188B6D6A67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95AAA552-BB15-4F2E-8567-FA5DB9299F39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95AAA552-BB15-4F2E-8567-FA5DB9299F39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95AAA552-BB15-4F2E-8567-FA5DB9299F39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95AAA552-BB15-4F2E-8567-FA5DB9299F39}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {512CF635-3BFD-45BE-AD84-9116523AA59C}
+	EndGlobalSection
+EndGlobal
