@@ -8,7 +8,9 @@ namespace BeamedPowerStandalone
     public class WirelessReflector : PartModule
     {
         // parameters set in part.cfg file
-        static string ManagedResource = ConfigFileReader.DetectedResource;
+
+        static string ManagedResource;
+        static int ResourceHash;
         [KSPField(isPersistant = false)]
         public float Reflectivity;
 
@@ -82,9 +84,8 @@ namespace BeamedPowerStandalone
 
         // declaring frequently used variables
         VesselFinder vesselFinder = new VesselFinder(); int frames;
-        readonly int ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id; int initFrames;
         ModuleCoreHeat coreHeat; ReceivedPower receiver = new ReceivedPower(); double heatModifier;
-
+        int initFrames;
         string operational = Localizer.Format("#LOC_BeamedPower_status_Operational");
         string ExceedTempLimit = Localizer.Format("#LOC_BeamedPower_status_ExceededTempLimit");
 
@@ -101,9 +102,12 @@ namespace BeamedPowerStandalone
             receiverCounter += 1;
         }
 
-        // initialise variables
         public void Start()
         {
+            string ConfigFilePath = KSPUtil.ApplicationRootPath + "GameData/BeamedPowerStandalone/Settings.cfg";
+            ConfigNode MainNode = ConfigNode.Load(ConfigFilePath);
+            ManagedResource = MainNode.GetNode("BPSettings").GetValue("ManagedResource");
+            ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id;
             initFrames = 0; frames = 0;
             Fields["CoreTemp"].guiUnits = "K/" + maxCoreTemp.ToString() + "K";
             Fields["SkinTemp"].guiUnits = "K/" + maxSkinTemp.ToString() + "K";

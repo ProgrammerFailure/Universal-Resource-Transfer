@@ -7,7 +7,8 @@ namespace BeamedPowerStandalone
 {
     public class WirelessSource : PartModule
     {
-        static string ManagedResource = ConfigFileReader.DetectedResource;
+        static string ManagedResource;
+        public int ResourceHash;
         // creating things on part right click menu (flight)
         [KSPField(guiName = "Power Transmitter", isPersistant = true, guiActive = true, guiActiveEditor = false), UI_Toggle(scene = UI_Scene.Flight)]
         public bool Transmitting;
@@ -60,6 +61,11 @@ namespace BeamedPowerStandalone
 
         public void Start()
         {
+            string ConfigFilePath = KSPUtil.ApplicationRootPath + "GameData/BeamedPowerStandalone/Settings.cfg";
+            ConfigNode MainNode = ConfigNode.Load(ConfigFilePath);
+            ManagedResource = MainNode.GetNode("BPSettings").GetValue("ManagedResource");
+            ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id;
+            Debug.Log(Time.realtimeSinceStartup + ManagedResource);
             frames = 20; initFrames = 0;
             receiversList = new List<ConfigNode>();
             Fields["CoreTemp"].guiUnits = "K/" + maxCoreTemp.ToString() + "K";
@@ -112,7 +118,7 @@ namespace BeamedPowerStandalone
         }
 
         // getting resource id of 'Electric Charge'
-        public int ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id;
+        
 
         // setting action group capability
         [KSPAction(guiName = "Toggle Power Transmitter")]

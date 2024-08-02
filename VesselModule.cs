@@ -6,13 +6,16 @@ namespace BeamedPowerStandalone
     // as vessel modules are processed in the background, this adds background vessel resource management
     public class BackgroundProcessing : VesselModule
     {
-        static string ManagedResource = ConfigFileReader.DetectedResource;
+        static string ManagedResource;
         int ResourceHash; int frames; double requestAmount;
-
+        
         public override void OnLoadVessel()
         {
-            base.OnLoadVessel();
-            ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id; frames = 0; requestAmount = 0;
+            string ConfigFilePath = KSPUtil.ApplicationRootPath + "GameData/BeamedPowerStandalone/Settings.cfg";
+            ConfigNode MainNode;
+            MainNode = ConfigNode.Load(ConfigFilePath);
+            ManagedResource = MainNode.GetNode("BPSettings").GetValue("ManagedResource");
+            ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id;
         }
 
         private double LoadVesselPowerData()
