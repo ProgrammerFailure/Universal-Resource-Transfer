@@ -7,6 +7,7 @@ namespace BeamedPowerStandalone
 {
     public class ReceivedPower
     {
+        
         PlanetOcclusion occlusion = new PlanetOcclusion();
         VesselFinder vesselFinder = new VesselFinder();
         RelativisticEffects relativistic = new RelativisticEffects();

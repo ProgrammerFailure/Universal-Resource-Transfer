@@ -1,0 +1,7 @@
+D:\Games and co\Custom Game Files\BeamedPowerStandalone\Plugins\BeamedPowerStandalone.dll
+D:\Games and co\Custom Game Files\BeamedPowerStandalone\Plugins\BeamedPowerStandalone.pdb
+D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Release\BeamedPowerStandalone.csproj.AssemblyReference.cache
+D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Release\BeamedPowerStandalone.csproj.CoreCompileInputs.cache
+D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Release\BeamedPo.6EF42652.Up2Date
+D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Release\BeamedPowerStandalone.dll
+D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Release\BeamedPowerStandalone.pdb

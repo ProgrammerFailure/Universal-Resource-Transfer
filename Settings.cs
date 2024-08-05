@@ -4,6 +4,9 @@ using UnityEngine;
 namespace BeamedPowerStandalone
 {
     // instructions for implementing custom difficulty settings were found on '1.2 modders notes' on the forums
+    
+
+
     public class BPSettings : GameParameters.CustomParameterNode
     {
         public override string Title { get { return "Beamed Power Difficulty Settings"; } }

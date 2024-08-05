@@ -7,6 +7,8 @@ namespace BeamedPowerStandalone
     public class WirelessReceiver : PartModule
     {
         // UI-right click menu in flight
+        static string ManagedResource;
+        static int ResourceHash;
         [KSPField(guiName = "Power Receiver", isPersistant = true, guiActive = true, guiActiveEditor = false), UI_Toggle(scene = UI_Scene.Flight)]
         public bool Listening;
 
@@ -48,15 +50,18 @@ namespace BeamedPowerStandalone
         public float maxSkinTemp = 1200f;
 
         int initFrames; ModuleCoreHeat coreHeat; ReceivedPower receiver;
-        readonly int EChash = PartResourceLibrary.Instance.GetDefinition("ElectricCharge").id;
         string ExceedTempLimit = Localizer.Format("#LOC_BeamedPower_status_ExceededTempLimit");
         string operational = Localizer.Format("#LOC_BeamedPower_status_Operational");
 
         [KSPField(isPersistant = true)]
         public int counter;
-
         public void Start()
         {
+            string ConfigFilePath = KSPUtil.ApplicationRootPath + "GameData/BeamedPowerStandalone/Settings.cfg";
+            ConfigNode MainNode;
+            MainNode = ConfigNode.Load(ConfigFilePath);
+            ManagedResource = MainNode.GetNode("BPSettings").GetValue("ManagedResource");
+            ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id;
             initFrames = 0;
             receiver = new ReceivedPower();
             Fields["CoreTemp"].guiUnits = "K/" + maxCoreTemp.ToString() + "K";
@@ -224,7 +229,7 @@ namespace BeamedPowerStandalone
 
                 if (HighLogic.CurrentGame.Parameters.CustomParams<BPSettings>().BackgroundProcessing == false)
                 {
-                    this.part.RequestResource(EChash, -(double)ReceivedPower * TimeWarp.fixedDeltaTime);
+                    this.part.RequestResource(ResourceHash, -(double)ReceivedPower * TimeWarp.fixedDeltaTime);
                 }
             }
         }
