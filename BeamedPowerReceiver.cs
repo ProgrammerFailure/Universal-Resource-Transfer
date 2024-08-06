@@ -9,6 +9,7 @@ namespace BeamedPowerStandalone
         // UI-right click menu in flight
         static string ManagedResource;
         static int ResourceHash;
+        string GUIResourceName;
         [KSPField(guiName = "Power Receiver", isPersistant = true, guiActive = true, guiActiveEditor = false), UI_Toggle(scene = UI_Scene.Flight)]
         public bool Listening;
 
@@ -60,8 +61,8 @@ namespace BeamedPowerStandalone
             string ConfigFilePath = KSPUtil.ApplicationRootPath + "GameData/BeamedPowerStandalone/Settings.cfg";
             ConfigNode MainNode;
             MainNode = ConfigNode.Load(ConfigFilePath);
-            ManagedResource = MainNode.GetNode("BPSettings").GetValue("ManagedResource");
-            ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id;
+            ManagedResource = MainNode.GetNode("BPSettings").GetNode("ResourceSettings").GetValue("ManagedResource");
+            GUIResourceName = MainNode.GetNode("BPSettings").GetNode("ResourceSettings").GetValue("GUIUnitName"); ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id;
             initFrames = 0;
             receiver = new ReceivedPower();
             Fields["CoreTemp"].guiUnits = "K/" + maxCoreTemp.ToString() + "K";
@@ -111,6 +112,10 @@ namespace BeamedPowerStandalone
             Fields["PowerReceived"].guiName = Localizer.Format("#LOC_BeamedPower_CalcResult");
             Fields["CalcWavelength"].guiName = Localizer.Format("#LOC_BeamedPower_CalcWavelength");
             Events["ToggleWavelength"].guiName = Localizer.Format("#LOC_BeamedPower_CalcToggleWavelength");
+
+            Fields["PowerBeamed"].guiUnits = GUIResourceName;
+            Fields["Excess"].guiUnits = GUIResourceName;
+            Fields["PowerReceived"].guiUnits = GUIResourceName;
         }
 
         [KSPEvent(guiName = "Cycle through vessels", guiActive = true, isPersistent = false, requireFullControl = true)]
