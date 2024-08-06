@@ -14,7 +14,7 @@ namespace BeamedPowerStandalone
             string ConfigFilePath = KSPUtil.ApplicationRootPath + "GameData/BeamedPowerStandalone/Settings.cfg";
             ConfigNode MainNode;
             MainNode = ConfigNode.Load(ConfigFilePath);
-            ManagedResource = MainNode.GetNode("BPSettings").GetValue("ManagedResource");
+            ManagedResource = MainNode.GetNode("BPSettings").GetNode("ResourceSettings").GetValue("ManagedResource");
             ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id;
         }
 

@@ -58,12 +58,13 @@ namespace BeamedPowerStandalone
         string operational = Localizer.Format("#LOC_BeamedPower_status_Operational");
         string ExceedTempLimit = Localizer.Format("#LOC_BeamedPower_status_ExceededTempLimit");
         string VesselNone = Localizer.Format("#LOC_BeamedPower_Vessel_None");
-
+        string GUIResourceName;
         public void Start()
         {
             string ConfigFilePath = KSPUtil.ApplicationRootPath + "GameData/BeamedPowerStandalone/Settings.cfg";
             ConfigNode MainNode = ConfigNode.Load(ConfigFilePath);
-            ManagedResource = MainNode.GetNode("BPSettings").GetValue("ManagedResource");
+            ManagedResource = MainNode.GetNode("BPSettings").GetNode("ResourceSettings").GetValue("ManagedResource");
+            GUIResourceName = MainNode.GetNode("BPSettings").GetNode("ResourceSettings").GetValue("GUIUnitName");
             ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id;
             Debug.Log(Time.realtimeSinceStartup + ManagedResource);
             frames = 20; initFrames = 0;
@@ -97,6 +98,10 @@ namespace BeamedPowerStandalone
             Fields["RecvEfficiency"].guiName = Localizer.Format("#LOC_BeamedPower_CalcRecvEfficiency");
             Fields["PowerBeamed"].guiName = Localizer.Format("#LOC_BeamedPower_CalcPowerBeamed");
             Fields["PowerReceived"].guiName = Localizer.Format("#LOC_BeamedPower_CalcResult");
+
+            Fields["PowerBeamed"].guiUnits = GUIResourceName;
+            Fields["Excess"].guiUnits = GUIResourceName;
+            Fields["PowerReceived"].guiUnits = GUIResourceName;
         }
 
         private void SetHeatParams()

@@ -7,6 +7,7 @@ namespace BeamedPowerStandalone
 {
     public class WirelessReflector : PartModule
     {
+        string GUIResourceName;
         // parameters set in part.cfg file
 
         static string ManagedResource;
@@ -106,7 +107,8 @@ namespace BeamedPowerStandalone
         {
             string ConfigFilePath = KSPUtil.ApplicationRootPath + "GameData/BeamedPowerStandalone/Settings.cfg";
             ConfigNode MainNode = ConfigNode.Load(ConfigFilePath);
-            ManagedResource = MainNode.GetNode("BPSettings").GetValue("ManagedResource");
+            GUIResourceName = MainNode.GetNode("BPSettings").GetNode("ResourceSettings").GetValue("GUIUnitName"); ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id;
+            ManagedResource = MainNode.GetNode("BPSettings").GetNode("ResourceSettings").GetValue("ManagedResource");
             ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id;
             initFrames = 0; frames = 0;
             Fields["CoreTemp"].guiUnits = "K/" + maxCoreTemp.ToString() + "K";
