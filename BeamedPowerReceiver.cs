@@ -204,6 +204,13 @@ namespace BeamedPowerStandalone
                     Listening = false;
                 }
             }
+            else if (part.Modules.Contains<ModuleDeployableSolarPanel>())
+            {
+                if (part.Modules.GetModule<ModuleDeployableSolarPanel>().deployState != ModuleDeployableSolarPanel.DeployState.EXTENDED)
+                {
+                    Listening = false;
+                }
+            }
         }
 
         public void FixedUpdate()
