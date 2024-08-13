@@ -50,6 +50,15 @@ namespace BeamedPowerStandalone
         [KSPField(isPersistant = false)]
         public float maxSkinTemp = 1200f;
 
+        [KSPField(isPersistant = false)]
+        string OutputResource;
+
+        [KSPField(isPersistant = false)]
+        string OutputResourceGUIName = "Error";
+
+        [KSPField(isPersistant = false)]
+        int ConversionRate = 1;
+
         int initFrames; ModuleCoreHeat coreHeat; ReceivedPower receiver;
         string ExceedTempLimit = Localizer.Format("#LOC_BeamedPower_status_ExceededTempLimit");
         string operational = Localizer.Format("#LOC_BeamedPower_status_Operational");
@@ -58,11 +67,7 @@ namespace BeamedPowerStandalone
         public int counter;
         public void Start()
         {
-            string ConfigFilePath = KSPUtil.ApplicationRootPath + "GameData/BeamedPowerStandalone/Settings.cfg";
-            ConfigNode MainNode;
-            MainNode = ConfigNode.Load(ConfigFilePath);
-            ManagedResource = MainNode.GetNode("BPSettings").GetNode("ResourceSettings").GetValue("ManagedResource");
-            GUIResourceName = MainNode.GetNode("BPSettings").GetNode("ResourceSettings").GetValue("GUIUnitName"); ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id;
+            ManagedResource = OutputResource;
             initFrames = 0;
             receiver = new ReceivedPower();
             Fields["CoreTemp"].guiUnits = "K/" + maxCoreTemp.ToString() + "K";
@@ -113,9 +118,11 @@ namespace BeamedPowerStandalone
             Fields["CalcWavelength"].guiName = Localizer.Format("#LOC_BeamedPower_CalcWavelength");
             Events["ToggleWavelength"].guiName = Localizer.Format("#LOC_BeamedPower_CalcToggleWavelength");
 
-            Fields["PowerBeamed"].guiUnits = GUIResourceName;
-            Fields["Excess"].guiUnits = GUIResourceName;
-            Fields["PowerReceived"].guiUnits = GUIResourceName;
+            Fields["PowerBeamed"].guiUnits = OutputResourceGUIName;
+            Fields["Excess"].guiUnits = OutputResourceGUIName;
+            Fields["PowerReceived"].guiUnits = OutputResourceGUIName;
+
+            
         }
 
         [KSPEvent(guiName = "Cycle through vessels", guiActive = true, isPersistent = false, requireFullControl = true)]
@@ -234,7 +241,7 @@ namespace BeamedPowerStandalone
 
                 if (HighLogic.CurrentGame.Parameters.CustomParams<BPSettings>().BackgroundProcessing == false)
                 {
-                    this.part.RequestResource(ResourceHash, -(double)ReceivedPower * TimeWarp.fixedDeltaTime);
+                    this.part.RequestResource(ResourceHash, -(double)ReceivedPower * TimeWarp.fixedDeltaTime * ConversionRate);
                 }
             }
         }
