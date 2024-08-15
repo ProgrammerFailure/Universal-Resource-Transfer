@@ -11,3 +11,5 @@ D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-
 D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Debug\BeamedPo.6EF42652.Up2Date
 D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Debug\BeamedPowerStandalone.dll
 D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Debug\BeamedPowerStandalone.pdb
+D:\Games and co\Games\KSP instances\KSP Dev Install\GameData\BeamedPowerStandalone\Plugins\BeamedPowerStandalone.dll
+D:\Games and co\Games\KSP instances\KSP Dev Install\GameData\BeamedPowerStandalone\Plugins\BeamedPowerStandalone.pdb
