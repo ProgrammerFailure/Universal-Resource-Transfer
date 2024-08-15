@@ -7,9 +7,7 @@ namespace BeamedPowerStandalone
     public class WirelessReceiver : PartModule
     {
         // UI-right click menu in flight
-        static string ManagedResource;
         static int ResourceHash;
-        string GUIResourceName;
         [KSPField(guiName = "Power Receiver", isPersistant = true, guiActive = true, guiActiveEditor = false), UI_Toggle(scene = UI_Scene.Flight)]
         public bool Listening;
 
@@ -50,14 +48,15 @@ namespace BeamedPowerStandalone
         [KSPField(isPersistant = false)]
         public float maxSkinTemp = 1200f;
 
-        [KSPField(isPersistant = false)]
-        string OutputResource;
+        [KSPField(isPersistant = false, guiActive = false)]
+        public string OutputResource;
 
-        [KSPField(isPersistant = false)]
-        string OutputResourceGUIName = "Error";
+        [KSPField(isPersistant = false,guiActive = false)]
+        public string OutputResourceGUIName;
 
-        [KSPField(isPersistant = false)]
-        int ConversionRate = 1;
+        [KSPField(isPersistant = false, guiActive = false)]
+        public int ConversionRate;
+
 
         int initFrames; ModuleCoreHeat coreHeat; ReceivedPower receiver;
         string ExceedTempLimit = Localizer.Format("#LOC_BeamedPower_status_ExceededTempLimit");
@@ -65,9 +64,30 @@ namespace BeamedPowerStandalone
 
         [KSPField(isPersistant = true)]
         public int counter;
+
+        // adds received power calculator to receivers right-click menu in editor
+
+        [KSPField(guiName = "Distance", groupName = "calculator1", groupDisplayName = "Received Power Calculator", groupStartCollapsed = true, guiUnits = "Mm", guiActive = false, guiActiveEditor = true, isPersistant = false), UI_FloatRange(minValue = 0, maxValue = 10000000, stepIncrement = 0.001f, scene = UI_Scene.Editor)]
+        public float Distance;
+
+        [KSPField(guiName = "Source Dish Diameter", groupName = "calculator1", guiUnits = "m", guiActive = false, guiActiveEditor = true, isPersistant = false), UI_FloatRange(minValue = 0, maxValue = 100, stepIncrement = 0.5f, scene = UI_Scene.Editor)]
+        public float SourceDishDia;
+
+        [KSPField(guiName = "Source Efficiency", groupName = "calculator1", guiActive = false, guiActiveEditor = true, guiUnits = "%", isPersistant = false), UI_FloatRange(minValue = 0, maxValue = 100, stepIncrement = 1, scene = UI_Scene.Editor)]
+        public float CalcEfficiency;
+
+        [KSPField(guiName = "Power Beamed", groupName = "calculator1", guiUnits = " Units/s", guiActive = false, guiActiveEditor = true, isPersistant = false), UI_FloatRange(minValue = 0, maxValue = 100000, stepIncrement = 1, scene = UI_Scene.Editor)]
+        public float BeamedPower;
+
+        [KSPField(guiName = "Result", groupName = "calculator1", guiUnits = "EC/s", guiActive = false, guiActiveEditor = true, isPersistant = false)]
+        public float PowerReceived;
+
+        [KSPField(guiName = "Beamed Wavelength", groupName = "calculator1", guiActiveEditor = true, guiActive = false, isPersistant = false)]
+        public string CalcWavelength = Localizer.Format("#LOC_BeamedPower_Wavelength_long");
         public void Start()
         {
-            ManagedResource = OutputResource;
+            ResourceHash = PartResourceLibrary.Instance.GetDefinition(OutputResource).id;
+            
             initFrames = 0;
             receiver = new ReceivedPower();
             Fields["CoreTemp"].guiUnits = "K/" + maxCoreTemp.ToString() + "K";
@@ -117,12 +137,8 @@ namespace BeamedPowerStandalone
             Fields["PowerReceived"].guiName = Localizer.Format("#LOC_BeamedPower_CalcResult");
             Fields["CalcWavelength"].guiName = Localizer.Format("#LOC_BeamedPower_CalcWavelength");
             Events["ToggleWavelength"].guiName = Localizer.Format("#LOC_BeamedPower_CalcToggleWavelength");
-
-            Fields["PowerBeamed"].guiUnits = OutputResourceGUIName;
-            Fields["Excess"].guiUnits = OutputResourceGUIName;
+            Fields["ReceivedPower"].guiUnits = OutputResourceGUIName;
             Fields["PowerReceived"].guiUnits = OutputResourceGUIName;
-
-            
         }
 
         [KSPEvent(guiName = "Cycle through vessels", guiActive = true, isPersistent = false, requireFullControl = true)]
@@ -253,25 +269,6 @@ namespace BeamedPowerStandalone
             }
         }
 
-        // adds received power calculator to receivers right-click menu in editor
-
-        [KSPField(guiName = "Distance", groupName = "calculator1", groupDisplayName = "Received Power Calculator", groupStartCollapsed = true, guiUnits = "Mm", guiActive = false, guiActiveEditor = true, isPersistant = false), UI_FloatRange(minValue = 0, maxValue = 10000000, stepIncrement = 0.001f, scene = UI_Scene.Editor)]
-        public float Distance;
-
-        [KSPField(guiName = "Source Dish Diameter", groupName = "calculator1", guiUnits = "m", guiActive = false, guiActiveEditor = true, isPersistant = false), UI_FloatRange(minValue = 0, maxValue = 100, stepIncrement = 0.5f, scene = UI_Scene.Editor)]
-        public float SourceDishDia;
-
-        [KSPField(guiName = "Source Efficiency", groupName = "calculator1", guiActive = false, guiActiveEditor = true, guiUnits = "%", isPersistant = false), UI_FloatRange(minValue = 0, maxValue = 100, stepIncrement = 1, scene = UI_Scene.Editor)]
-        public float CalcEfficiency;
-
-        [KSPField(guiName = "Power Beamed", groupName = "calculator1", guiUnits = "EC/s", guiActive = false, guiActiveEditor = true, isPersistant = false), UI_FloatRange(minValue = 0, maxValue = 100000, stepIncrement = 1, scene = UI_Scene.Editor)]
-        public float BeamedPower;
-
-        [KSPField(guiName = "Result", groupName = "calculator1", guiUnits = "EC/s", guiActive = false, guiActiveEditor = true, isPersistant = false)]
-        public float PowerReceived;
-
-        [KSPField(guiName = "Beamed Wavelength", groupName = "calculator1", guiActiveEditor = true, guiActive = false, isPersistant = false)]
-        public string CalcWavelength = Localizer.Format("#LOC_BeamedPower_Wavelength_long");
 
         [KSPEvent(guiName = "Toggle Wavelength", guiActive = false, guiActiveEditor = true, groupName = "calculator1", isPersistent = false)]
         public void ToggleWavelength()
@@ -288,7 +285,7 @@ namespace BeamedPowerStandalone
                 float spot_size = (float)(1.44 * wavelength_num * Distance * 1000000d / SourceDishDia);
                 PowerReceived = (spot_size > recvDiameter) ?
                     recvDiameter / spot_size * BeamedPower * (CalcEfficiency / 100) * recvEfficiency : 
-                    BeamedPower * (CalcEfficiency / 100) * recvEfficiency;
+                    BeamedPower * (CalcEfficiency / 100) * recvEfficiency * ConversionRate;
                 
                 PowerReceived = (float)Math.Round(PowerReceived, 1);
             }
