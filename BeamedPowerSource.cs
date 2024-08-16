@@ -65,6 +65,16 @@ namespace BeamedPowerStandalone
             ConfigNode MainNode = ConfigNode.Load(ConfigFilePath);
             ManagedResource = MainNode.GetNode("BPSettings").GetNode("ResourceSettings").GetValue("ManagedResource");
             GUIResourceName = MainNode.GetNode("BPSettings").GetNode("ResourceSettings").GetValue("GUIUnitName");
+            if (string.IsNullOrEmpty(ManagedResource))
+            {
+                Debug.Log("BeamedPowerStandalone: ManagedResource is not set correctly. It has reverted to the default of ElectricCharge.");
+                ManagedResource = "ElectricCharge";
+            }
+            if (string.IsNullOrEmpty(GUIResourceName))
+            {
+                Debug.Log("BeamedPowerStandalone: GUIResourceName is not set correctly. It has reverted to the default of EC/s.");
+                GUIResourceName = "EC/s";
+            }
             ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id;
             Debug.Log(Time.realtimeSinceStartup + ManagedResource);
             frames = 20; initFrames = 0;
