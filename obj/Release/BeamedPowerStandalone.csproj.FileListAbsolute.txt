@@ -5,3 +5,9 @@ D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-
 D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Release\BeamedPo.6EF42652.Up2Date
 D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Release\BeamedPowerStandalone.dll
 D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Release\BeamedPowerStandalone.pdb
+D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Release\Assembly-CSharp-firstpass.dll
+D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Release\Assembly-CSharp.dll
+D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Release\UnityEngine.CoreModule.dll
+D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Release\UnityEngine.dll
+D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Release\UnityEngine.UI.dll
+D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Release\Assembly-CSharp.xml
