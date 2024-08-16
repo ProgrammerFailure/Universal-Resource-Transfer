@@ -48,14 +48,14 @@ namespace BeamedPowerStandalone
         [KSPField(isPersistant = false)]
         public float maxSkinTemp = 1200f;
 
-        [KSPField(isPersistant = false, guiActive = false)]
-        public string OutputResource;
+        [KSPField(isPersistant = false)]
+        public string OutputResource = "ElectricCharge";
 
-        [KSPField(isPersistant = false,guiActive = false)]
-        public string OutputResourceGUIName;
+        [KSPField(isPersistant = false)]
+        public string OutputResourceGUIName = "EC/s";
 
-        [KSPField(isPersistant = false, guiActive = false)]
-        public int ConversionRate;
+        [KSPField(isPersistant = false)]
+        public int ConversionRate = 1;
 
 
         int initFrames; ModuleCoreHeat coreHeat; ReceivedPower receiver;
