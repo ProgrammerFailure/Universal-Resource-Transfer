@@ -2,7 +2,7 @@
 using UnityEngine;
 using KSP.Localization;
 
-namespace BeamedPowerStandalone
+namespace UniversalResourceTransfer
 {
     public class WirelessReceiver : PartModule
     {

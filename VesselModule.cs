@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace BeamedPowerStandalone
+namespace UniversalResourceTransfer
 {
     // as vessel modules are processed in the background, this adds background vessel resource management
     public class BackgroundProcessing : VesselModule

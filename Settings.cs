@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace BeamedPowerStandalone
+namespace UniversalResourceTransfer
 {
     // instructions for implementing custom difficulty settings were found on '1.2 modders notes' on the forums
     

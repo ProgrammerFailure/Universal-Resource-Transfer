@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using KSP.Localization;
 
-namespace BeamedPowerStandalone
+namespace UniversalResourceTransfer
 {
     public class ReceivedPower
     {

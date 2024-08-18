@@ -4,7 +4,7 @@ using UnityEngine;
 using KSP.Localization;
 using CommNet.Occluders;
 
-namespace BeamedPowerStandalone
+namespace UniversalResourceTransfer
 {
     public class VesselFinder
     {
