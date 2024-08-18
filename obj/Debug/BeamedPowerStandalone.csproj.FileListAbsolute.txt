@@ -9,7 +9,7 @@ D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-
 D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Debug\BeamedPowerStandalone.csproj.AssemblyReference.cache
 D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Debug\BeamedPowerStandalone.csproj.CoreCompileInputs.cache
 D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Debug\BeamedPo.6EF42652.Up2Date
-D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Debug\BeamedPowerStandalone.dll
-D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Debug\BeamedPowerStandalone.pdb
-D:\Games and co\Games\KSP instances\KSP Dev Install\GameData\BeamedPowerStandalone\Plugins\BeamedPowerStandalone.dll
-D:\Games and co\Games\KSP instances\KSP Dev Install\GameData\BeamedPowerStandalone\Plugins\BeamedPowerStandalone.pdb
+D:\Games and co\Games\KSP instances\KSP Dev Install\GameData\BeamedPowerStandalone\Plugins\UniversalResourceTransfer.dll
+D:\Games and co\Games\KSP instances\KSP Dev Install\GameData\BeamedPowerStandalone\Plugins\UniversalResourceTransfer.pdb
+D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Debug\UniversalResourceTransfer.dll
+D:\Games and co\Custom Game Files\ProgrammerFailure\KSP-Beamed-Power-Standalone-mod\obj\Debug\UniversalResourceTransfer.pdb
