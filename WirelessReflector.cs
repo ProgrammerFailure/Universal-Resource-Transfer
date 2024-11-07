@@ -105,7 +105,7 @@ namespace UniversalResourceTransfer
 
         public void Start()
         {
-            string ConfigFilePath = KSPUtil.ApplicationRootPath + "GameData/BeamedPowerStandalone/Settings.cfg";
+            string ConfigFilePath = KSPUtil.ApplicationRootPath + "GameData/UniversalResourceTransfer/Settings.cfg";
             ConfigNode MainNode = ConfigNode.Load(ConfigFilePath);
             GUIResourceName = MainNode.GetNode("BPSettings").GetNode("ResourceSettings").GetValue("GUIUnitName"); ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id;
             ManagedResource = MainNode.GetNode("BPSettings").GetNode("ResourceSettings").GetValue("ManagedResource");
@@ -305,7 +305,7 @@ namespace UniversalResourceTransfer
                         }
                         catch
                         {
-                            Debug.LogError("BeamedPowerStandalone.WirelessReflector : Unable to load receiver vessel list.");
+                            Debug.LogError("UniversalResourceTransfer.WirelessReflector : Unable to load receiver vessel list.");
                         }
                         frames = 0;
                     }

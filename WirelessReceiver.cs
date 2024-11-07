@@ -257,7 +257,7 @@ namespace UniversalResourceTransfer
                 else
                 {
                     counter = 0; recvPower = 0d;
-                    Debug.LogWarning("BeamedPowerStandalone.WirelessReceiver : Invalid recvType set in part.cfg of " + this.part.partName);
+                    Debug.LogWarning("UniversalResourceTransfer.WirelessReceiver : Invalid recvType set in part.cfg of " + this.part.partName);
                 }
 
                 ReceivedPower = (float)Math.Round(recvPower, 1);

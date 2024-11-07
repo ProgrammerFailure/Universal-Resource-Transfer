@@ -11,7 +11,7 @@ namespace UniversalResourceTransfer
         
         public override void OnLoadVessel()
         {
-            string ConfigFilePath = KSPUtil.ApplicationRootPath + "GameData/BeamedPowerStandalone/Settings.cfg";
+            string ConfigFilePath = KSPUtil.ApplicationRootPath + "GameData/UniversalResourceTransfer/Settings.cfg";
             ConfigNode MainNode;
             MainNode = ConfigNode.Load(ConfigFilePath);
             ManagedResource = MainNode.GetNode("BPSettings").GetNode("ResourceSettings").GetValue("ManagedResource");
