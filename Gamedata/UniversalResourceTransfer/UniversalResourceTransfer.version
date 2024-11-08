@@ -1,0 +1,30 @@
+{
+    "NAME":"UniversalResourceTransfer",
+    "URL":"https://github.com/ProgrammerFailure/Universal-Resource-Transfer/blob/master/UniversalResourceTransfer.version",
+    "DOWNLOAD":"https://github.com/ProgrammerFailure/Universal-Resource-Transfer/releases",
+    "VERSION":
+    {
+        "MAJOR":1,
+        "MINOR":0,
+        "PATCH":4,
+        "BUILD":0
+    },
+    "KSP_VERSION":
+    {
+        "MAJOR":1,
+        "MINOR":12,
+        "PATCH":0
+    },
+    "KSP_VERSION_MIN":
+    {
+        "MAJOR":1,
+        "MINOR":8,
+        "PATCH":0
+    },
+    "KSP_VERSION_MAX":
+    {
+        "MAJOR":1,
+        "MINOR":12,
+        "PATCH":99
+    }
+}
