@@ -1,66 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="packages\KSPBuildTools.0.0.2-alpha.7\build\KSPBuildTools.props" Condition="Exists('packages\KSPBuildTools.0.0.2-alpha.7\build\KSPBuildTools.props')" />
+  <Import Project="packages\KSPBuildTools.0.0.3\build\KSPBuildTools.props" Condition="Exists('packages\KSPBuildTools.0.0.3\build\KSPBuildTools.props')" />
   <Import Project="packages\JsonPoke.1.2.0\build\JsonPoke.props" Condition="Exists('packages\JsonPoke.1.2.0\build\JsonPoke.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DB80DF10-16F3-4DD2-A87F-8C188B6D6A67}</ProjectGuid>
+    <ProjectGuid>{DDBEEE3D-57D8-4A56-B938-2C73AB38F17D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UniversalResourceTransfer</RootNamespace>
-    <AssemblyName>UniversalResourceTransfer</AssemblyName>
+    <RootNamespace>Universal_Resource_Transfer</RootNamespace>
+    <AssemblyName>Universal-Resource-Transfer</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
-	<PropertyGroup>
-		<BinariesOutputRelativePath>\Gamedata\$(SolutionName)\Plugins</BinariesOutputRelativePath>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <PropertyGroup>
+    <BinariesOutputRelativePath>GameData/$(SolutionName)/Plugins</BinariesOutputRelativePath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>portable</DebugType>
+    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Games\KSP instances\KSP Dev Install\GameData\BeamedPowerStandalone\Plugins\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
-    <DocumentationFile>
-    </DocumentationFile>
-    <PlatformTarget>ARM64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>obj\Release\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="WirelessReceiver.cs" />
-    <Compile Include="WirelessSource.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReceivedPower.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="VesselModule.cs" />
-    <Compile Include="WirelessReflector.cs" />
     <Compile Include="UsefulModules.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VesselModule.cs" />
+    <Compile Include="WirelessReceiver.cs" />
+    <Compile Include="WirelessReflector.cs" />
+    <Compile Include="WirelessSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Properties\Version.version" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -69,9 +57,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('packages\JsonPoke.1.2.0\build\JsonPoke.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\JsonPoke.1.2.0\build\JsonPoke.props'))" />
     <Error Condition="!Exists('packages\JsonPoke.1.2.0\build\JsonPoke.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\JsonPoke.1.2.0\build\JsonPoke.targets'))" />
-    <Error Condition="!Exists('packages\KSPBuildTools.0.0.2-alpha.7\build\KSPBuildTools.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\KSPBuildTools.0.0.2-alpha.7\build\KSPBuildTools.props'))" />
-    <Error Condition="!Exists('packages\KSPBuildTools.0.0.2-alpha.7\build\KSPBuildTools.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\KSPBuildTools.0.0.2-alpha.7\build\KSPBuildTools.targets'))" />
+    <Error Condition="!Exists('packages\KSPBuildTools.0.0.3\build\KSPBuildTools.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\KSPBuildTools.0.0.3\build\KSPBuildTools.props'))" />
+    <Error Condition="!Exists('packages\KSPBuildTools.0.0.3\build\KSPBuildTools.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\KSPBuildTools.0.0.3\build\KSPBuildTools.targets'))" />
   </Target>
   <Import Project="packages\JsonPoke.1.2.0\build\JsonPoke.targets" Condition="Exists('packages\JsonPoke.1.2.0\build\JsonPoke.targets')" />
-  <Import Project="packages\KSPBuildTools.0.0.2-alpha.7\build\KSPBuildTools.targets" Condition="Exists('packages\KSPBuildTools.0.0.2-alpha.7\build\KSPBuildTools.targets')" />
+  <Import Project="packages\KSPBuildTools.0.0.3\build\KSPBuildTools.targets" Condition="Exists('packages\KSPBuildTools.0.0.3\build\KSPBuildTools.targets')" />
 </Project>

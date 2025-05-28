@@ -11,10 +11,8 @@ namespace UniversalResourceTransfer
         
         public override void OnLoadVessel()
         {
-            string ConfigFilePath = KSPUtil.ApplicationRootPath + "GameData/UniversalResourceTransfer/Settings.cfg";
-            ConfigNode MainNode;
-            MainNode = ConfigNode.Load(ConfigFilePath);
-            ManagedResource = MainNode.GetNode("BPSettings").GetNode("ResourceSettings").GetValue("ManagedResource");
+            ConfigNode MainNode = GameDatabase.Instance.GetConfigNode("UniversalResourceTransfer/Settings/BPSettings");
+            ManagedResource = MainNode.GetNode("ResourceSettings").GetValue("ManagedResource");
             ResourceHash = PartResourceLibrary.Instance.GetDefinition(ManagedResource).id;
         }
 

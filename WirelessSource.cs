@@ -61,10 +61,9 @@ namespace UniversalResourceTransfer
         string GUIResourceName;
         public void Start()
         {
-            string ConfigFilePath = KSPUtil.ApplicationRootPath + "GameData/UniversalResourceTransfer/Settings.cfg";
-            ConfigNode MainNode = ConfigNode.Load(ConfigFilePath);
-            ManagedResource = MainNode.GetNode("BPSettings").GetNode("ResourceSettings").GetValue("ManagedResource");
-            GUIResourceName = MainNode.GetNode("BPSettings").GetNode("ResourceSettings").GetValue("GUIUnitName");
+            ConfigNode MainNode = GameDatabase.Instance.GetConfigNode("UniversalResourceTransfer/Settings/BPSettings");
+            ManagedResource = MainNode.GetNode("ResourceSettings").GetValue("ManagedResource");
+            GUIResourceName = MainNode.GetNode("ResourceSettings").GetValue("GUIUnitName");
             if (string.IsNullOrEmpty(ManagedResource))
             {
                 Debug.LogError("Universal Resource Transfer: ManagedResource is not set correctly. It has reverted to the default of ElectricCharge.");
